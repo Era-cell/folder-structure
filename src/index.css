@@ -1,0 +1,90 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details {
+  position: relative; /* Ensure that the pseudo-element is positioned relative to the details element */
+}
+
+details > summary {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+  cursor: pointer;
+  position: relative;
+}
+
+details > summary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  z-index: -1;
+}
+
+details[open] summary .arrow-icon {
+  transform: rotate(90deg);
+  transition: transform 0.1s ease;
+  padding: 0 10px; /* Add padding to the left and right of the arrow icon */
+}
+
+details:not([open]) summary .arrow-icon {
+  transform: rotate(0deg);
+  transition: transform 0.1s ease;
+  padding: 0 10px; /* Add padding to the left and right of the arrow icon */
+}
+
+/* Highlight selected item */
+.selected::before {
+  background-color: #d0e3f7; /* Darker blue for selected item */
+}
+
+/* Hover effect */
+details > summary:not(.selected):hover::before,
+.task-item:not(.selected):hover::before {
+  background-color: #e0e0e0; /* Light grey for hover effect */
+}
+
+/* Background when clicking elsewhere */
+.background-grey::before {
+  background-color: #d3d3d3; /* Dark grey for background effect */
+}
+
+.task-item {
+  position: relative;
+  padding: 5px 0;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.task-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  z-index: -1;
+}
+
+.task-item.selected::before {
+  background-color: #d0e3f7; /* Darker blue for selected item */
+}
+
+.task-item.background-grey::before {
+  background-color: #d3d3d3; /* Dark grey for background effect */
+}
+
+.task-item:not(.selected):hover::before {
+  background-color: #e0e0e0; /* Light grey for hover effect */
+}
